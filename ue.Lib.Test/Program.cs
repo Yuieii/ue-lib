@@ -10,4 +10,8 @@ var component = ChatComponents.Formatted("Hello, %s", ChatComponents.Literal("wo
 var flattened = ComponentFlattener.Default.Flatten(new PassthroughVisitor().Visit(component))
     .ResolveComponents(new Regex("Hel"), (_, _) => ChatComponents.Literal("HEL", Style.Empty.SetColor(TextColor.Red).SetItalic(true)));
 
+// Outputs: HELlo, world!
+// HEL -> Red, italic
+// ld  -> Gold
+// Others are normal
 Console.WriteLine(new AnsiTextVisitor().Visit(flattened));

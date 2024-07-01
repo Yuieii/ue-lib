@@ -20,31 +20,13 @@ public class ComponentFlattener
             return ChatComponents.Literal("");
 
         var first = storage.First();
-        // if (Mode == FlattenMode.FirstFollowedBySiblings)
-        // {
-        //     if (storage.Count == 1) return first;
-        //
-        //     var x = first.Clone();
-        //     foreach (var sibling in storage.Skip(1))
-        //     {
-        //         x.AddSibling(sibling);
-        //     }
-        //
-        //     return x;
-        // }
-
-        //if (Mode == FlattenMode.EmptyWithSiblings)
+        var a = new MutableChatComponent(new LiteralContent(""), first.Style.Clear());
+        foreach (var component in storage)
         {
-            var a = new MutableChatComponent(new LiteralContent(""), first.Style.Clear());
-            foreach (var component in storage)
-            {
-                a.Siblings.Add(component);
-            }
-
-            return a;
+            a.Siblings.Add(component);
         }
 
-        // throw new ArgumentOutOfRangeException(nameof(Mode));
+        return a;
     }
 
     private static void VisitFlatten(IChatComponent component, List<IChatComponent> storage)
@@ -58,10 +40,4 @@ public class ComponentFlattener
             VisitFlatten(sibling, storage);
         }
     }
-}
-
-public enum FlattenMode
-{
-    EmptyWithSiblings,
-    FirstFollowedBySiblings
 }
