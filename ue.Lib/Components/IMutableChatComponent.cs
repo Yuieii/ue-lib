@@ -1,26 +1,31 @@
-﻿namespace ue.Components;
+﻿// Copyright (c) 2024 Yuieii.
+
+namespace ue.Components;
 
 public interface IMutableChatComponent : IChatComponent
 {
     /// <inheritdoc cref="IChatComponent.Content"/>
     public new IContent Content { get; set; }
+
     IContent IChatComponent.Content => Content;
-    
+
     /// <inheritdoc cref="IChatComponent.Style"/>
     public new IStyle Style { get; set; }
+
     IStyle IChatComponent.Style => Style;
-    
+
     /// <inheritdoc cref="IChatComponent.Siblings"/>
     public new List<IChatComponent> Siblings { get; set; }
+
     IReadOnlyList<IChatComponent> IChatComponent.Siblings => Siblings;
-    
+
     /// <summary>
     /// Adds another component as a sibling of this component.
     /// </summary>
     /// <param name="sibling">The component to be added as a sibling.</param>
     /// <returns>This mutated component.</returns>
     public IMutableChatComponent AddSibling(IChatComponent sibling);
-    
+
     /// <summary>
     /// Overrides the style with the given style.
     /// </summary>
@@ -34,7 +39,7 @@ public interface IMutableChatComponent : IChatComponent
     /// <param name="modifier">The style modifier.</param>
     /// <returns>This mutated component.</returns>
     public IMutableChatComponent ModifyStyle(Func<IStyle, IStyle> modifier);
-    
+
     /// <summary>
     /// Modify the style based on the current style.
     /// </summary>
@@ -66,7 +71,7 @@ internal class MutableChatComponent : IMutableChatComponent, IChatComponentSelf<
     {
         style = style.OverrideFrom(Style);
         Content.Visit(visitor, style);
-        
+
         foreach (var sibling in Siblings)
         {
             sibling.Visit(visitor, style);
@@ -90,7 +95,7 @@ internal class MutableChatComponent : IMutableChatComponent, IChatComponentSelf<
         Style = modifier(Style);
         return this;
     }
-    
+
     public IMutableChatComponent ModifyStyle<T>(Func<T, IStyle> modifier) where T : IStyle
     {
         Style = modifier((T)Style);

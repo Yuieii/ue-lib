@@ -1,4 +1,6 @@
-﻿namespace ue.Components;
+﻿// Copyright (c) 2024 Yuieii.
+
+namespace ue.Components;
 
 /// <summary>
 /// A <see cref="PassthroughVisitor"/> consumes entries of a content and a style, and packs each of them into a
@@ -7,7 +9,7 @@
 public class PassthroughVisitor : IContentVisitor<List<IChatComponent>>
 {
     private readonly List<IChatComponent> _result = [];
-    
+
     /// <summary>
     /// Visit contents of a <see cref="IChatComponent"/>, and returns a list of consumed contents and style configurations,
     /// each represented with a <see cref="IChatComponent"/>. 
@@ -29,5 +31,7 @@ public class PassthroughVisitor : IContentVisitor<List<IChatComponent>>
         return true;
     }
 
-    void IContentVisitor.ConsumeLiteral(string content, IStyle style) { }
+    void IContentVisitor.ConsumeLiteral(string content, IStyle style)
+    {
+    }
 }

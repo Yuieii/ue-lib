@@ -1,4 +1,6 @@
-﻿namespace ue.Components;
+﻿// Copyright (c) 2024 Yuieii.
+
+namespace ue.Components;
 
 public abstract class ComponentResolver
 {
@@ -22,7 +24,7 @@ public abstract class ComponentResolver
             var offset = 0;
             var content = literal.Text;
             var matches = GetResolvedParts(content);
-            
+
             foreach (var match in matches)
             {
                 var range = match.Range;

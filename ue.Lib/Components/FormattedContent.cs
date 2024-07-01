@@ -1,4 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿// Copyright (c) 2024 Yuieii.
+
+using System.Text.RegularExpressions;
 using ue.Extensions;
 
 namespace ue.Components;
@@ -29,19 +31,19 @@ public class FormattedContent : IContentSelf<FormattedContent>
                 var front = fmt[offset..m.Index];
                 if (front.Length > 0)
                     result.Add(new MutableChatComponent(new LiteralContent(front), style.Clear()));
-                
+
                 result.Add(ci >= parameters.Count && ci < 0
                     ? new MutableChatComponent(new LiteralContent(m.Value), style.Clear())
                     : parameters[ci].Clone());
 
                 offset = m.Index + m.Length;
             }
-            
+
             result.Add(new MutableChatComponent(new LiteralContent(fmt[offset..]), style.Clear()));
             return result;
         });
     }
-    
+
     public string Format { get; }
 
     public FormattedContent(string format, params IChatComponent[] contents)

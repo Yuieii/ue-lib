@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿// Copyright (c) 2024 Yuieii.
+
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using ue.Values;
@@ -45,7 +47,7 @@ public class TextColor
         Name = name;
         Color = color;
     }
-    
+
     public string Name { get; }
 
     public Argb32 Color { get; }
@@ -82,13 +84,13 @@ public class TextColor
 
     public TextColor ToNearestPredefinedColor()
     {
-        if (Name[0] != '#') 
+        if (Name[0] != '#')
             return this;
 
         var closest = default(TextColor);
         var cl = Color;
         var smallestDiff = 0;
-        
+
         foreach (var tc in _predefined)
         {
             var rAverage = (tc.Color.R + cl.R) / 2;
@@ -96,7 +98,7 @@ public class TextColor
             var gDiff = tc.Color.G - cl.G;
             var bDiff = tc.Color.B - cl.B;
 
-            var diff = ((2 + (rAverage >> 8)) * rDiff * rDiff) + 
+            var diff = ((2 + (rAverage >> 8)) * rDiff * rDiff) +
                        (4 * gDiff * gDiff) +
                        ((2 + ((255 - rAverage) >> 8)) * bDiff * bDiff);
 
@@ -112,7 +114,7 @@ public class TextColor
 
         return closest;
     }
-    
+
     private struct CustomRgbColor
     {
         public static CustomRgbColor Unit { get; } = new();

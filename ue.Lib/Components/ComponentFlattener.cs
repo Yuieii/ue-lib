@@ -1,4 +1,6 @@
-﻿namespace ue.Components;
+﻿// Copyright (c) 2024 Yuieii.
+
+namespace ue.Components;
 
 public class ComponentFlattener
 {
@@ -15,8 +17,8 @@ public class ComponentFlattener
     {
         var storage = components.ToList();
         storage.RemoveAll(x => x.Content is LiteralContent literal && string.IsNullOrEmpty(literal.Text));
-        
-        if (!storage.Any()) 
+
+        if (!storage.Any())
             return ChatComponents.Literal("");
 
         var first = storage.First();
@@ -34,7 +36,7 @@ public class ComponentFlattener
         var x = component.Clone();
         x.Siblings.Clear();
         storage.Add(x);
-        
+
         foreach (var sibling in component.Siblings)
         {
             VisitFlatten(sibling, storage);

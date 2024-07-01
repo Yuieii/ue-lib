@@ -1,4 +1,6 @@
-﻿using System.Text.Json.Nodes;
+﻿// Copyright (c) 2024 Yuieii.
+
+using System.Text.Json.Nodes;
 
 namespace ue.Components;
 
@@ -11,10 +13,14 @@ public class EmptyStyle : IStyleSelf<EmptyStyle>
     /// The shared singleton instance that represents an empty style.
     /// </summary>
     public static EmptyStyle Instance { get; } = new();
-    
-    private EmptyStyle() { }
-    
-    public void Serialize(JsonObject data) { }
+
+    private EmptyStyle()
+    {
+    }
+
+    public void Serialize(JsonObject data)
+    {
+    }
 
     public IStyle OverrideFrom(IStyle other) => other;
 

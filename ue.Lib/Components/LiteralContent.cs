@@ -1,4 +1,6 @@
-﻿namespace ue.Components;
+﻿// Copyright (c) 2024 Yuieii.
+
+namespace ue.Components;
 
 public class LiteralContent(string text) : IContentSelf<LiteralContent>
 {

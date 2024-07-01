@@ -1,4 +1,6 @@
-﻿using System.Text.Json.Nodes;
+﻿// Copyright (c) 2024 Yuieii.
+
+using System.Text.Json.Nodes;
 
 namespace ue.Components;
 
@@ -13,10 +15,9 @@ public record Style(
     : ITerminalTextStyle, IStyleSelf<Style>
 {
     public static Style Empty { get; } = new(null, null, null, null, null, null, null);
-    
+
     public void Serialize(JsonObject obj)
     {
-        
     }
 
     public IStyle OverrideFrom(IStyle other)
@@ -28,8 +29,8 @@ public record Style(
         var italic = !reset ? Italic : null;
         var underlined = !reset ? Underlined : null;
         var strikethrough = !reset ? Strikethrough : null;
-        
-        if (other is ITextColorStyle colorStyle) 
+
+        if (other is ITextColorStyle colorStyle)
             color = colorStyle.Color ?? color;
 
         if (other is IBackColorStyle backColorStyle)

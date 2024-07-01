@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿// Copyright (c) 2024 Yuieii.
+
+using System.Drawing;
 using System.Runtime.CompilerServices;
 
 namespace ue.Values;
@@ -9,17 +11,17 @@ public readonly struct Argb32
     /// The blue channel of the color.
     /// </summary>
     public readonly byte B;
-    
+
     /// <summary>
     /// The green channel of the color.
     /// </summary>
     public readonly byte G;
-    
+
     /// <summary>
     /// The red channel of the color.
     /// </summary>
     public readonly byte R;
-    
+
     /// <summary>
     /// The alpha channel of the color.
     /// </summary>
@@ -40,7 +42,7 @@ public readonly struct Argb32
     /// <summary>
     /// The raw RGB value of the color, without the alpha channel.
     /// </summary>
-    public int Rgb => (int) (RawValue & 0xffffff);
+    public int Rgb => (int)(RawValue & 0xffffff);
 
     public static implicit operator Argb32(uint hex) => new(hex);
     public static implicit operator Argb32(int hex) => new(hex);
@@ -54,7 +56,7 @@ public readonly struct Argb32
         G = source.G;
         A = source.A;
     }
-    
+
     public Argb32(int hex)
     {
         var copy = hex;

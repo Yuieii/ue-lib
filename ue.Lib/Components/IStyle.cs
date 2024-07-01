@@ -1,4 +1,6 @@
-﻿using System.Text.Json.Nodes;
+﻿// Copyright (c) 2024 Yuieii.
+
+using System.Text.Json.Nodes;
 
 namespace ue.Components;
 
@@ -9,14 +11,14 @@ public interface IStyle
     /// </summary>
     /// <param name="data">The target JSON object where the serialized data will be inserted.</param>
     public void Serialize(JsonObject data);
-    
+
     /// <summary>
     /// Creates an equivalent style that overrides this style from other style.
     /// </summary>
     /// <param name="other">The other style that will override this style.</param>
     /// <returns>A newly created style.</returns>
     public IStyle OverrideFrom(IStyle other);
-    
+
     /// <summary>
     /// Returns a cleared style of this type. 
     /// </summary>
@@ -32,6 +34,7 @@ public interface IStyleSelf<out T> : IStyle where T : IStyleSelf<T>
 {
     /// <inheritdoc cref="IStyle.Clear"/>
     public new T Clear();
+
     IStyle IStyle.Clear() => Clear();
 }
 
@@ -66,17 +69,17 @@ public interface ITerminalTextStyle : ITextColorStyle, IBackColorStyle
     /// Whether the text should be bold.
     /// </summary>
     public bool? Bold { get; }
-    
+
     /// <summary>
     /// Whether the text should be italic.
     /// </summary>
     public bool? Italic { get; }
-    
+
     /// <summary>
     /// Whether the text should be underlined.
     /// </summary>
     public bool? Underlined { get; }
-    
+
     /// <summary>
     /// Whether the text should be a strikethrough text.
     /// </summary>

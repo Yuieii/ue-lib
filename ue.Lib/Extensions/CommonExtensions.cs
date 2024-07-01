@@ -1,4 +1,6 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿// Copyright (c) 2024 Yuieii.
+
+using System.Diagnostics.CodeAnalysis;
 
 namespace ue.Extensions;
 

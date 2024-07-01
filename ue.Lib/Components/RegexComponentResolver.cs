@@ -1,4 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿// Copyright (c) 2024 Yuieii.
+
+using System.Text.RegularExpressions;
 
 namespace ue.Components;
 
@@ -26,7 +28,7 @@ public class RegexComponentResolver : ComponentResolver
         private readonly Func<Match, IStyle, IChatComponent?> _factory;
 
         public Range Range => new(_match.Index, _match.Index + _match.Length);
-        
+
         public RegexResolvedComponentPart(Match match, Func<Match, IStyle, IChatComponent?> factory)
         {
             _match = match;

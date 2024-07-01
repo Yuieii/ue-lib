@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿// Copyright (c) 2024 Yuieii.
+
+using System.Drawing;
 using ue.Components;
 using ue.Values;
 
@@ -37,7 +39,7 @@ public class ClassicAnsiColor : AnsiColor
     public static ClassicAnsiColor White       { get; } = new(37, true);
     public static ClassicAnsiColor Reset       { get; } = new(0);
     // @formatter:on
-    
+
     private static readonly Dictionary<TextColor, ClassicAnsiColor> _colorMappings = new();
 
     static ClassicAnsiColor()
@@ -61,11 +63,11 @@ public class ClassicAnsiColor : AnsiColor
         _colorMappings[TextColor.White]       = White;
         // @formatter:on
     }
-    
+
     internal static AnsiColor InternalFromTextColor(TextColor color)
     {
         var closest = color.ToNearestPredefinedColor();
-        if (_colorMappings.TryGetValue(closest, out var result)) 
+        if (_colorMappings.TryGetValue(closest, out var result))
             return result;
 
         throw new ArgumentException($"Color of predefined color {closest} is not defined in the mapping.");

@@ -1,4 +1,6 @@
-﻿namespace ue;
+﻿// Copyright (c) 2024 Yuieii.
+
+namespace ue;
 
 public static class UeUtil
 {

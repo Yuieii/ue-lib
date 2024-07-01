@@ -1,4 +1,6 @@
-﻿namespace ue.Components;
+﻿// Copyright (c) 2024 Yuieii.
+
+namespace ue.Components;
 
 public interface IContentVisitor
 {
@@ -11,7 +13,7 @@ public interface IContentVisitor
     /// <see langword="True"/> if the visitor understands the content and consumed the content.
     /// </returns>
     public bool Consume(IContent content, IStyle style);
-    
+
     /// <summary>
     /// Provides the literal representation of the content to the visitor.
     /// </summary>
